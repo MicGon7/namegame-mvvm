@@ -25,7 +25,7 @@ import java.util.Objects;
 
 public class BindingAdapters {
     private static final Interpolator OVERSHOOT = new OvershootInterpolator();
-    private static final int SCALE_ANIM_DURATION = 400;
+    private static final int SCALE_ANIM_DURATION = 800;
     private static final int FADE_ANIM_DURATION = 900;
     private static final int SCALE_ANIM_START_DELAY = 100;
     private static final int FADE_ANIM_START_DELAY = 2000;
