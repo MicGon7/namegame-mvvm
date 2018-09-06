@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="com.willowtreeapps.namegame.util.NameGameUtil" />
+
+        <variable
+            name="viewModel"
+            type="com.willowtreeapps.namegame.viewmodel.NameGameViewModel" />
+
+    </data>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/stats_bar_border_height"
+        android:background="@drawable/layout_border"
+        android:gravity="center_vertical|center_horizontal"
+        android:paddingTop="@dimen/spacing_4dp">
+
+        <ImageView
+            android:id="@+id/current_round_label"
+            android:layout_width="@dimen/stats_bar_image_width"
+            android:layout_height="@dimen/stats_bar_image_height"
+            android:layout_marginBottom="@dimen/spacing_8dp"
+            android:layout_marginStart="@dimen/spacing_8dp"
+            android:layout_marginTop="@dimen/spacing_8dp"
+            android:contentDescription="@string/number_of_correct_answers_icon_text"
+            android:src="@drawable/ic_horse_round"
+            android:text="@string/answers_correct"
+            android:textSize="@dimen/text_size_normal"
+            tools:text="Correct:" />
+
+        <TextView
+            android:id="@+id/current_round"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{NameGameUtil.displayRound(viewModel.currentRound, viewModel.roundLimit)}"
+            android:textSize="@dimen/text_size_normal"
+            tools:text="0" />
+
+
+        <ImageView
+            android:id="@+id/correct_label"
+            android:layout_width="@dimen/stats_bar_image_width"
+            android:layout_height="@dimen/stats_bar_image_height"
+            android:contentDescription="@string/number_of_correct_answers_icon_text"
+            android:src="@drawable/ic_android_happy"
+            android:text="@string/answers_correct"
+            android:textSize="@dimen/text_size_normal"
+            tools:text="Correct:" />
+
+        <TextView
+            android:id="@+id/correct_score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{String.valueOf(viewModel.correctCount)}"
+            android:textSize="@dimen/text_size_normal"
+            tools:text="0" />
+
+
+        <ImageView
+            android:id="@+id/incorrect_label"
+            android:layout_width="@dimen/stats_bar_image_width"
+            android:layout_height="@dimen/stats_bar_image_height"
+            android:contentDescription="@string/number_of_incorrect_answers_icon_text"
+            android:src="@drawable/ic_android_sad"
+            android:text="@string/answers_incorrect"
+            android:textSize="@dimen/text_size_normal"
+            tools:text="Incorrect:" />
+
+        <TextView
+            android:id="@+id/incorrect_score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{String.valueOf(viewModel.incorrectCount)}"
+            android:textSize="@dimen/text_size_normal"
+            app:layout_constraintVertical_bias="0.533"
+            tools:text="0" />
+
+        <ImageView
+            android:id="@+id/round_time_label"
+            android:layout_width="@dimen/stats_bar_image_width"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/average_time_icon_text"
+            android:src="@drawable/ic_stopwatch"
+            android:text="@string/answers_average"
+            android:textSize="@dimen/text_size_normal"
+            tools:text="Average:" />
+
+        <TextView
+            android:id="@+id/round_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="@{String.valueOf(viewModel.roundTimeText)}"
+            android:textSize="@dimen/text_size_normal"
+            tools:text="0" />
+
+    </LinearLayout>
+</layout>

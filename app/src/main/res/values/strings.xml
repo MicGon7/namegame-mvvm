@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">Name Game</string>
+    <string name="question">Who is %s?</string>
+    <string name="cdFace">A face</string>
+    <string name="person_list">Person List</string>
+    <string name="menu_title">DubTree NameGame</string>
+    <string name="willowTree_logo_desc">WillowTree logo</string>
+    <string name="mode_name">M</string>
+    <string name="answers_correct">Correct:</string>
+    <string name="answers_incorrect">Incorrect:</string>
+    <string name="answers_average">Average:</string>
+    <string name="stats_title">Game Over!</string>
+    <string name="stats_label">Stats</string>
+    <string name="average_time_icon_text">Average time icon</string>
+    <string name="number_of_correct_answers_icon_text">Number of correct answers icon</string>
+    <string name="number_of_incorrect_answers_icon_text">Number of incorrect answers icon</string>
+    <string name="game_over_text">Play Again?</string>
+    <string name="average_answer_time">Average Answer Time</string>
+    <string name="matt_mode">Matt Mode!</string>
+    <string name="flip_mode">Flip Mode!</string>
+    <string name="hint_mode">Hint Mode!</string>
+    <string name="seconds_text">Seconds</string>
+    <string name="dialog_positive_btn_text">Try Again</string>
+
+</resources>

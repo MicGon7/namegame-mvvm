@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="com.willowtreeapps.namegame.util.NameGameUtil" />
+
+        <variable
+            name="viewModel"
+            type="com.willowtreeapps.namegame.viewmodel.NameGameViewModel" />
+
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:visibleGone="@{viewModel.gameOver}">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/name_game_title_text_margin"
+                android:text="@string/average_answer_time"
+                android:textAlignment="center"
+                android:textColor="@color/darkGray"
+                android:textSize="@dimen/text_size_normal" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="@{NameGameUtil.formatDoubleToString(viewModel.averageAnswerTime)}"
+                android:textColor="@color/darkGray"
+                android:textSize="@dimen/text_size_large"
+                tools:text="0.0" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/name_game_title_text_margin"
+                android:text="@string/seconds_text"
+                android:textAlignment="center"
+                android:textColor="@color/darkGray"
+                android:textSize="@dimen/text_size_normal" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:backgroundTint="@color/willowtree_blue"
+                android:onClick="@{() -> viewModel.resetGame()}"
+                android:paddingBottom="@dimen/spacing_8dp"
+                android:text="@string/game_over_text" />
+
+        </LinearLayout>
+
+    </android.support.constraint.ConstraintLayout>
+</layout>

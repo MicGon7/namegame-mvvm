@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="com.willowtreeapps.namegame.util.NameGameUtil" />
+
+
+        <variable
+            name="viewModel"
+            type="com.willowtreeapps.namegame.viewmodel.NameGameViewModel" />
+
+        <variable
+            name="animateProfilesIn"
+            type="Boolean" />
+
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ProgressBar
+            visibleGone="@{viewModel.loading}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:indeterminateDrawable="@drawable/progress"
+            android:indeterminateDuration="800" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_16dp"
+            android:layout_marginTop="@dimen/special_round_top_margin"
+            android:paddingTop="@dimen/spacing_8dp"
+            android:textAlignment="center"
+            android:textColor="@color/alphaGreen"
+            android:textSize="@dimen/text_size_small"
+            app:specialRound="@{viewModel.specialRound}"
+            app:specialRoundText="@{viewModel.roundType}"
+            tools:text="SPECIAL ROUND!" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:visibleGone="@{!viewModel.loading}">
+
+
+            <include
+                android:id="@+id/stats_bar"
+                layout="@layout/name_game_stats_bar"
+                bind:viewModel="@{viewModel}" />
+
+
+            <include
+                android:id="@+id/results_screen"
+                layout="@layout/name_game_results_view"
+                android:visibility="gone"
+                bind:viewModel="@{viewModel}" />
+
+
+            <com.willowtreeapps.namegame.view.NameGameProfileView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="@dimen/spacing_16dp"
+                android:clickable="false"
+                android:gravity="center"
+                android:paddingTop="@dimen/spacing_8dp"
+                android:textSize="@dimen/text_size_normal"
+                app:profileDisplayName="@{viewModel.gameProfiles.get(viewModel.correctProfilePosition)}"
+                app:profileImageUrl="@{viewModel.gameProfiles.get(viewModel.correctProfilePosition).headshot.url}"
+                app:showProfileName="@{!viewModel.flipMode}" />
+
+            <LinearLayout
+                android:id="@+id/face_container"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                app:correctProfilePosition="@{viewModel.correctProfilePosition}"
+                app:fadeVisible="@{viewModel.hintMode}"
+                app:gameProfiles="@{viewModel.gameProfiles}"
+                app:scaleVisible="@{animateProfilesIn}">
+
+                <com.willowtreeapps.namegame.view.NameGameProfileView
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:onClick="@{() -> viewModel.onProfileSelected(0)}"
+                    app:showProfileName="@{viewModel.flipMode}" />
+
+                <com.willowtreeapps.namegame.view.NameGameProfileView
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:onClick="@{() -> viewModel.onProfileSelected(1)}"
+                    app:showProfileName="@{viewModel.flipMode}" />
+
+                <com.willowtreeapps.namegame.view.NameGameProfileView
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:onClick="@{() -> viewModel.onProfileSelected(2)}"
+                    app:showProfileName="@{viewModel.flipMode}" />
+
+                <com.willowtreeapps.namegame.view.NameGameProfileView
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:onClick="@{() -> viewModel.onProfileSelected(3)}"
+                    app:showProfileName="@{viewModel.flipMode}" />
+
+                <com.willowtreeapps.namegame.view.NameGameProfileView
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_marginBottom="@dimen/spacing_16dp"
+                    android:layout_weight="1"
+                    android:onClick="@{() -> viewModel.onProfileSelected(4)}"
+                    app:showProfileName="@{viewModel.flipMode}" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+</layout>

@@ -1,0 +1,59 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    repositories {
+        google()
+        jcenter()
+
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.1.4'
+
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+ext {
+    configuration = [
+
+            package          : "com.willowtreeapps.namegame",
+            targetSdkVersion : 27,
+            minSdkVersion    : 24,
+            buildToolsVersion: "27.0.3",
+            versionCode      : 1,
+            versionName      : "1.0"
+    ]
+
+    libraries = [
+            archComponents   : "1.1.1",
+            supportVersion   : "27.1.1",
+            retrofit         : "2.4.0",
+            retrofitConvertor: "2.4.0",
+            okhttp3          : "3.10.0",
+            gson             : "2.8.4",
+            constraintLayout : "2.0.0-alpha2",
+            glide            : "4.8.0",
+            dagger           : "2.15",
+            dagger_compiler  : "2.0",
+            dagger_processor : "2.15",
+            supportTestRules : "1.0.2",
+            mockito          : "2.0.44-beta",
+            robolectric      : "3.0",
+            javax_annotation : "3.2-b06",
+
+    ]
+}
